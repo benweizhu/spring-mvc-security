@@ -1,0 +1,40 @@
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'jetty'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies{
+    compile 'org.springframework:spring-webmvc:3.2.5.RELEASE'
+    compile 'org.springframework.security:spring-security-web:3.2.5.RELEASE'
+    compile 'org.hibernate:hibernate-validator:5.0.1.Final'
+    compile 'jstl:jstl:1.2'
+    compile 'org.slf4j:slf4j-api:1.7.5'
+    testCompile 'junit:junit:4.11'
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.bluepapa32:gradle-watch-plugin:0.1.5'
+    }
+}
+
+apply plugin: 'com.bluepapa32.watch'
+
+watch {
+    java {
+        files files('src/main/java')
+        tasks 'compileJava'
+    }
+    resources {
+        files fileTree(dir: 'src/main/resources', include: '**/*.xml')
+        files fileTree(dir: 'src/main/resources', include: '**/*.properties')
+        tasks 'processResources'
+    }
+}
