@@ -5,5 +5,6 @@
     <title>Spring MVC Security</title>
 </head>
 <body>
+hello
 </body>
 </html>
