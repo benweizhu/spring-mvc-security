@@ -8,7 +8,7 @@
                     http://www.springframework.org/schema/security/spring-security.xsd">
 
     <security:http use-expressions="true">
-        <security:intercept-url pattern="/**" access="hasRole('USER')"/>
+        <security:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
         <security:form-login/>
         <security:logout/>
     </security:http>
@@ -16,9 +16,9 @@
     <security:authentication-manager>
         <security:authentication-provider>
             <security:user-service>
-                <security:user name="jimi" password="jimispassword" authorities="USER, ADMIN"/>
-                <security:user name="bob" password="bobspassword" authorities="USER"/>
-                <security:user name="ben" password="ben" authorities="USER"/>
+                <security:user name="jimi" password="jimispassword" authorities="ROLE_USER, ROLE_ADMIN"/>
+                <security:user name="bob" password="bobspassword" authorities="ROLE_USER"/>
+                <security:user name="ben" password="ben" authorities="ROLE_USER"/>
             </security:user-service>
         </security:authentication-provider>
     </security:authentication-manager>
