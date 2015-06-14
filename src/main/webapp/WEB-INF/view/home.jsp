@@ -5,6 +5,7 @@
     <title>Spring MVC Security</title>
 </head>
 <body>
-hello
+hello ${userName}
+<a href="/spring-mvc-security/j_spring_security_logout">logout</a>
 </body>
 </html>
