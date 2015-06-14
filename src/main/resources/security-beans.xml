@@ -7,18 +7,17 @@
                     http://www.springframework.org/schema/security
                     http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <security:http use-expressions="true">
-        <security:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
-        <security:form-login/>
+    <security:http>
+        <security:intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <security:intercept-url pattern="/**" access="ROLE_USER"/>
+        <security:form-login login-page="/login"/>
         <security:logout/>
     </security:http>
 
     <security:authentication-manager>
         <security:authentication-provider>
             <security:user-service>
-                <security:user name="jimi" password="jimispassword" authorities="ROLE_USER, ROLE_ADMIN"/>
-                <security:user name="bob" password="bobspassword" authorities="ROLE_USER"/>
-                <security:user name="ben" password="ben" authorities="ROLE_USER"/>
+                <security:user name="ben" password="ben" authorities="ROLE_USER, ROLE_ADMIN"/>
             </security:user-service>
         </security:authentication-provider>
     </security:authentication-manager>
